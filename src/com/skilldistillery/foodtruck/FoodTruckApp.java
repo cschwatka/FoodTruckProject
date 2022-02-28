@@ -1,7 +1,6 @@
 package com.skilldistillery.foodtruck;
 
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class FoodTruckApp {
 
@@ -12,32 +11,33 @@ public class FoodTruckApp {
 		FoodTruck[] trucks = new FoodTruck[5];
 
 		FoodTruck truck = new FoodTruck();
+		
+		System.out.println("You can enter up to 5 Food Trucks.\nLet's begin...\n");
 
 		for (int i = 0; i < trucks.length; i++) {
 
-			truck.setTruckId();
+			truck.setTruckId(0);
 
-			System.out.println("Enter a Name for your Truck (quit if done): ");
+			System.out.println("Please enter a Name for your Truck (quit if done): ");
 			truck.setTruckName(sc.nextLine());
 
 			if (!truck.getTruckName().equalsIgnoreCase("quit")) {
 
 				System.out.println("Enter the Food Type for this Truck: ");
 				truck.setFoodType(sc.nextLine());
-
+				
 				System.out.println("Enter your rating for this Truck (0.0 - 5.0): ");
 				truck.setRating(sc.nextDouble());
 				sc.nextLine(); // janky workaround to input issue
 
-				System.out.println(truck.getTruckName() + " saved to object...");
+				System.out.println(truck.getTruckName() + " saving...");
 				truck.displayTruck();
 
 				trucks[i] = new FoodTruck(truck.getTruckId(), truck.getTruckName(), truck.getFoodType(),
 						truck.getRating());
 
-				System.out.println(truck.getTruckName() + " checking array ...");
+				System.out.println(truck.getTruckName() + " saved.\n");
 
-				System.out.println(Arrays.deepToString(trucks));
 
 			}
 
@@ -61,7 +61,8 @@ public class FoodTruckApp {
 			case 1:
 				for (int i = 0; i < trucks.length; i++) {
 					if (trucks[i] != null) {
-						System.out.println(trucks[i].getTruckName());
+//						System.out.println(trucks[i].getTruckName());
+						trucks[i].displayTruck();
 					} else {
 						continue;
 					}
@@ -89,7 +90,7 @@ public class FoodTruckApp {
 				break;
 			case 3:
 				FoodTruck topTruck = new FoodTruck();
-				String topTruckName = trucks[0].getTruckName();
+//				String topTruckName = trucks[0].getTruckName();
 				double best = 0.0;
 				
 				for (int i = 0; i < trucks.length; i++) {

@@ -1,8 +1,7 @@
 package com.skilldistillery.foodtruck;
 
 public class FoodTruck {
-	private int trucksSaved;
-
+	private static int nextTruckId;
 	private int truckId;
 	private String truckName;
 	private String foodType;
@@ -17,7 +16,8 @@ public class FoodTruck {
 	}
 
 	public FoodTruck(int tId, String tName, String fType, double rating) {
-		this.truckId = tId;
+		this.truckId = nextTruckId;
+		
 		this.truckName = tName;
 		this.foodType = fType;
 		this.rating = rating;
@@ -25,8 +25,9 @@ public class FoodTruck {
 
 	// Setters
 
-	public void setTruckId() {
-		this.truckId += 1;
+	public void setTruckId(int truckId) {
+		this.truckId = nextTruckId;
+		nextTruckId++;
 	}
 	public void setTruckName(String tName) {
 		this.truckName = tName;
