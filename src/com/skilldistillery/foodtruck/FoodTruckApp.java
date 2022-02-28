@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class FoodTruckApp {
 
 	public static void main(String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 
 		// create array of FoodTruck objects
 		FoodTruck[] trucks = new FoodTruck[5];
 
 		FoodTruck truck = new FoodTruck();
-		
+
 		System.out.println("You can enter up to 5 Food Trucks.\nLet's begin...\n");
 
 		for (int i = 0; i < trucks.length; i++) {
@@ -25,7 +26,7 @@ public class FoodTruckApp {
 
 				System.out.println("Enter the Food Type for this Truck: ");
 				truck.setFoodType(sc.nextLine());
-				
+
 				System.out.println("Enter your rating for this Truck (0.0 - 5.0): ");
 				truck.setRating(sc.nextDouble());
 				sc.nextLine(); // janky workaround to input issue
@@ -38,7 +39,6 @@ public class FoodTruckApp {
 
 				System.out.println(truck.getTruckName() + " saved.\n");
 
-
 			}
 
 			else {
@@ -47,7 +47,6 @@ public class FoodTruckApp {
 			}
 
 		}
-
 		// Menu
 		int selection;
 		while (true) {
@@ -76,15 +75,17 @@ public class FoodTruckApp {
 					if (trucks[i] != null) {
 //						System.out.println(trucks[i].getRating());
 						sumRatings += trucks[i].getRating();
-						averageRatings = sumRatings / trucks[i].getTruckId(); // a little lazy, but should work since my id will match count ... test this though
-					} 
-					
+						averageRatings = sumRatings / trucks[i].getTruckId(); // a little lazy, but should work since my
+																				// id will match count ... test this
+																				// though
+					}
+
 					else {
 						continue;
 					}
-					
+
 				}
-				
+
 //				System.out.println(sumRatings);
 				System.out.println("The average rating of all trucks is:" + averageRatings);
 				break;
@@ -92,19 +93,18 @@ public class FoodTruckApp {
 				FoodTruck topTruck = new FoodTruck();
 //				String topTruckName = trucks[0].getTruckName();
 				double best = 0.0;
-				
+
 				for (int i = 0; i < trucks.length; i++) {
-					
-					if (trucks[i] != null && trucks[i].getRating() > best ) {
+
+					if (trucks[i] != null && trucks[i].getRating() > best) {
 						best = trucks[i].getRating();
 						topTruck = trucks[i];
 					}
-					
-					
+
 				}
-				
-				System.out.println("The highest-rated food truck has a rating of: " + best );
-				System.out.println("Here are its details: " + topTruck.toString() );
+
+				System.out.println("The highest-rated food truck has a rating of: " + best);
+				System.out.println("Here are its details: " + topTruck.toString());
 				break;
 			case 4:
 				System.out.println("Exiting program...");
@@ -113,6 +113,5 @@ public class FoodTruckApp {
 				System.out.println("Not a valid Menu option. Try again.");
 			}
 		}
-
 	}
 }
